@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist } from 'next/font/google';
+import { Geist, Lexend } from 'next/font/google';
+import { AccessBar } from '@/components/access-bar';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { TiltLayer } from '@/components/tilt-layer';
@@ -9,6 +10,12 @@ import './globals.css';
 const sans = Geist({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap',
+});
+
+const readable = Lexend({
+  subsets: ['latin'],
+  variable: '--font-readable',
   display: 'swap',
 });
 
@@ -32,11 +39,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en" className={`${sans.variable} ${readable.variable}`}>
       <body suppressHydrationWarning>
         <a className="skip" href="#content">
           Skip to content
         </a>
+        <AccessBar />
         <TiltLayer />
         <SiteHeader />
         <main id="content">{children}</main>

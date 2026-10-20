@@ -20,7 +20,7 @@ export default function AccessibilityPage() {
       <article className="article prose">
         <h2>On this website</h2>
         <p>
-          Body text and headings use Geist. The site stays on a dark background with light text. Pages use headings, landmarks, and a skip link. Forms have visible labels. Buttons are named in words. You can zoom. Motion, including the parallax on photographs, stops when your system asks for reduced motion.
+          A round Accessibility button sits at the bottom right of every page, just above the microphone. Hover it and the name Accessibility appears. It can make the type larger, turn on high contrast, switch to an easier reading face, highlight links, add space between lines, stop motion, or read the page aloud. Those choices stay in this browser. Pages also use headings, landmarks, and a skip link. Forms have visible labels. Buttons are named in words. You can zoom. Motion stops when your system asks for reduced motion, or when you turn it off here.
         </p>
         <h2>In the app, for blind students</h2>
         <p>These are the features a blind student uses. They do not depend on seeing the screen.</p>
