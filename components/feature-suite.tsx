@@ -43,7 +43,7 @@ const tools = [
     group: 'Voice',
     title: 'Read aloud',
     body: 'A topic can be spoken at a rate the student sets.',
-    more: 'Sound waits until they ask for it, so it does not talk over a screen reader. You can hear a short demo above.',
+    more: 'Sound waits until they ask for it, so it does not talk over a screen reader. A short demo is on the home page.',
   },
   {
     group: 'Alerts',
@@ -53,19 +53,26 @@ const tools = [
   },
 ];
 
-export function FeatureSuite() {
+export function FeatureSuite({ heading = true }: { heading?: boolean }) {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="section" id="features" aria-labelledby="features-title">
+    <section
+      className="section"
+      id={heading ? 'features' : undefined}
+      aria-labelledby={heading ? 'features-title' : undefined}
+      aria-label={heading ? undefined : 'Feature suite'}
+    >
       <div className="wrap">
-        <div className="section-head">
-          <p className="eyebrow">Feature suite</p>
-          <h2 id="features-title">The same term, more than one way in.</h2>
-          <p>
-            Eight tools a school can switch on. Choose one to read what it does today. The phone app that uses the camera and the microphone comes later.
-          </p>
-        </div>
+        {heading ? (
+          <div className="section-head">
+            <p className="eyebrow">Feature suite</p>
+            <h2 id="features-title">The same term, more than one way in.</h2>
+            <p>
+              Eight tools a school can switch on. Choose one to read what it does today. The phone app that uses the camera and the microphone comes later.
+            </p>
+          </div>
+        ) : null}
         <div className="suite">
           {tools.map((tool, index) => (
             <button

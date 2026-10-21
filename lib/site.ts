@@ -6,7 +6,7 @@ export const appOpensLabel = '12 January 2027';
 
 export const primaryNav = [
   { href: '/', label: 'Home' },
-  { href: '/#features', label: 'Features' },
+  { href: '/features', label: 'Features' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ] as const;
@@ -15,9 +15,9 @@ export const footerColumns = [
   {
     title: 'Product',
     links: [
-      { href: '/#features', label: 'Read aloud' },
-      { href: '/#features', label: 'Gaze navigation' },
-      { href: '/#features', label: 'Voice commands' },
+      { href: '/features', label: 'Read aloud' },
+      { href: '/features', label: 'Gaze navigation' },
+      { href: '/features', label: 'Voice commands' },
     ],
   },
   {
