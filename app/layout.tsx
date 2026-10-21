@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Lexend } from 'next/font/google';
-import { AccessBar } from '@/components/access-bar';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { TiltLayer } from '@/components/tilt-layer';
@@ -35,6 +34,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: '#121820',
   colorScheme: 'dark',
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -44,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip" href="#content">
           Skip to content
         </a>
-        <AccessBar />
         <TiltLayer />
         <SiteHeader />
         <main id="content">{children}</main>

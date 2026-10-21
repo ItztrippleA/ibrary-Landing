@@ -42,7 +42,7 @@ export function AccessBar() {
   useEffect(() => {
     if (!open) return;
     const root = panelRef.current;
-    const nodes = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer'), document.querySelector('.voice-dock'), document.querySelector('.page-reader')];
+    const nodes = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer'), document.querySelector('.voice-panel'), document.querySelector('.voice-mic'), document.querySelector('.page-reader')];
     nodes.forEach((node) => node?.setAttribute('inert', ''));
     const focusable = root?.querySelector<HTMLElement>('button, a');
     focusable?.focus();

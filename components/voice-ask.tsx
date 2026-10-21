@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { AccessBar } from '@/components/access-bar';
 
 type SpeechRecEvent = {
   results: ArrayLike<ArrayLike<{ transcript: string }>>;
@@ -123,6 +124,7 @@ export function VoiceAsk() {
           )}
         </div>
       ) : null}
+      <AccessBar />
       <button
         type="button"
         className={listening ? 'voice-mic is-listening' : 'voice-mic'}
