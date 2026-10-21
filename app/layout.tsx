@@ -3,7 +3,6 @@ import { Geist, Lexend } from 'next/font/google';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { TiltLayer } from '@/components/tilt-layer';
-import { VoiceAsk } from '@/components/voice-ask';
 import './globals.css';
 
 const sans = Geist({
@@ -41,14 +40,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sans.variable} ${readable.variable}`}>
       <body suppressHydrationWarning>
-        <a className="skip" href="#content">
-          Skip to content
-        </a>
+        <nav className="skip-links" aria-label="Shortcuts">
+          <a className="skip" href="#content">
+            Skip to content
+          </a>
+          <a className="skip" href="#access-launcher">
+            Accessibility
+          </a>
+          <a className="skip" href="#speak-button">
+            Speak to iBrary
+          </a>
+        </nav>
         <TiltLayer />
         <SiteHeader />
         <main id="content">{children}</main>
         <SiteFooter />
-        <VoiceAsk />
       </body>
     </html>
   );

@@ -42,7 +42,7 @@ export function AccessBar() {
   useEffect(() => {
     if (!open) return;
     const root = panelRef.current;
-    const nodes = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer'), document.querySelector('.voice-panel'), document.querySelector('.voice-mic'), document.querySelector('.page-reader')];
+    const nodes = [document.querySelector('.skip-links'), document.querySelector('.nav-links'), document.querySelector('.nav-toggle'), document.querySelector('main'), document.querySelector('footer'), document.querySelector('.voice-panel'), document.querySelector('.voice-mic'), document.querySelector('.page-reader')];
     nodes.forEach((node) => node?.setAttribute('inert', ''));
     const focusable = root?.querySelector<HTMLElement>('button, a');
     focusable?.focus();
@@ -88,9 +88,11 @@ export function AccessBar() {
       <button
         ref={launcherRef}
         type="button"
+        id="access-launcher"
         className="access-launcher"
         aria-expanded={open}
         aria-controls="access-panel"
+        aria-label="Accessibility"
         onClick={() => setOpen((value) => !value)}
       >
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -100,7 +102,7 @@ export function AccessBar() {
             d="M4.2 9.2a1 1 0 0 1 1-1h13.6a1 1 0 1 1 0 2h-5.05l1.55 7.6a1 1 0 0 1-1.96.4L12 13.7l-1.34 4.5a1 1 0 0 1-1.96-.4l1.55-7.6H5.2a1 1 0 0 1-1-1Z"
           />
         </svg>
-        <span className="access-hint">Accessibility</span>
+        <span className="access-hint" aria-hidden="true">Accessibility</span>
       </button>
       {open ? (
         <div

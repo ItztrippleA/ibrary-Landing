@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
+import { VoiceAsk } from '@/components/voice-ask';
 import { primaryNav } from '@/lib/site';
 
 export function SiteHeader() {
@@ -37,7 +38,7 @@ export function SiteHeader() {
     body.style.left = '0';
     body.style.right = '0';
     body.style.width = '100%';
-    const nodes = [document.querySelector('header'), document.querySelector('main'), document.querySelector('footer'), document.querySelector('.voice-dock')];
+    const nodes = [document.querySelector('.skip-links'), document.querySelector('header'), document.querySelector('main'), document.querySelector('footer')];
     nodes.forEach((node) => node?.setAttribute('inert', ''));
     sheetRef.current?.querySelector<HTMLElement>('button, a')?.focus();
 
@@ -82,10 +83,14 @@ export function SiteHeader() {
     <>
       <header className="site-header">
         <div className="wrap header-bar">
-          <Link href="/" className="brand">
+          <p className="brand">
             <span className="brand-mark">iBrary</span>
-          </Link>
+          </p>
+          <ul className="nav-links">
+            <NavItems pathname={pathname} />
+          </ul>
           <div className="header-tools">
+            <VoiceAsk />
             <button
               ref={toggleRef}
               type="button"
@@ -98,9 +103,6 @@ export function SiteHeader() {
               <span className="nav-toggle-bars" />
             </button>
           </div>
-          <ul className="nav-links">
-            <NavItems pathname={pathname} />
-          </ul>
         </div>
       </header>
       {open ? (

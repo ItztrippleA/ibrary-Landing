@@ -97,7 +97,7 @@ export function VoiceAsk() {
   }
 
   return (
-    <div className="voice-dock">
+    <div className="voice-dock" role="region" aria-label="Accessibility and speech">
       {open ? (
         <div className="voice-panel" role="region" aria-labelledby="voice-title">
           <div className="voice-panel-head">
@@ -127,6 +127,7 @@ export function VoiceAsk() {
       <AccessBar />
       <button
         type="button"
+        id="speak-button"
         className={listening ? 'voice-mic is-listening' : 'voice-mic'}
         aria-pressed={listening}
         aria-label={listening ? 'Stop listening' : 'Speak to iBrary'}
