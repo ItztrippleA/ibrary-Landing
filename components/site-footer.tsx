@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="site-footer" id="contact">
       <div className="wrap footer-grid">
         <div>
-          <p className="brand-mark">iBrary</p>
+          <img className="brand-logo" src="/logo.png" alt="iBrary" />
           <p className="fine">
             Secondary school for every student and teacher, from JSS1 to SS3.
           </p>

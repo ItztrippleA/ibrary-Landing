@@ -104,7 +104,7 @@ export function SiteHeader() {
       <header className="site-header">
         <div className="wrap header-bar">
           <p className="brand">
-            <span className="brand-mark">iBrary</span>
+            <img className="brand-logo" src="/logo.png" alt="iBrary" />
           </p>
           <ul className="nav-links">
             <NavItems pathname={pathname} />
