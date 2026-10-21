@@ -31,9 +31,17 @@ export function AudioHub() {
 
   function play() {
     if (!supported) return;
-    window.speechSynthesis.cancel();
+    const synth = window.speechSynthesis;
+    if (synth.paused) synth.resume();
+    if (synth.speaking || synth.pending) synth.cancel();
     const utterance = new SpeechSynthesisUtterance(script);
-    utterance.lang = 'en-GB';
+    const voice =
+      synth.getVoices().find((item) => item.lang === 'en-GB') ||
+      synth.getVoices().find((item) => item.lang.toLowerCase().startsWith('en'));
+    if (voice) {
+      utterance.voice = voice;
+      utterance.lang = voice.lang;
+    }
     utterance.rate = 1;
     utterance.onend = () => {
       setPlaying(false);
@@ -45,7 +53,8 @@ export function AudioHub() {
     };
     setLines(['Speaking the demo.', 'You can stop it at any time.', 'This stays in your browser.']);
     setPlaying(true);
-    window.speechSynthesis.speak(utterance);
+    synth.speak(utterance);
+    synth.resume();
   }
 
   return (

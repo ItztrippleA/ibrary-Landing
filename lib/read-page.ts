@@ -7,6 +7,7 @@ export type ReadState = {
 let reading = false;
 let status = 'Page reader is off.';
 let runId = 0;
+let keepAlive = 0;
 const listeners = new Set<(state: ReadState) => void>();
 
 function canSpeak() {
@@ -64,30 +65,46 @@ function chunks(text: string) {
   return out;
 }
 
-function speakAt(parts: string[], index: number, id: number) {
-  if (id !== runId) return;
-  if (index >= parts.length) {
-    reading = false;
-    status = 'The page has been read.';
-    emit();
-    return;
-  }
-  const utterance = new SpeechSynthesisUtterance(parts[index]);
-  utterance.lang = 'en-GB';
-  utterance.rate = 1;
-  utterance.onend = () => speakAt(parts, index + 1, id);
-  utterance.onerror = (event) => {
-    if (id !== runId) return;
-    if (event.error === 'interrupted' || event.error === 'canceled') return;
-    reading = false;
-    status = 'The page could not be read aloud.';
-    emit();
-  };
-  window.speechSynthesis.speak(utterance);
+function clearKeepAlive() {
+  window.clearInterval(keepAlive);
+  keepAlive = 0;
+}
+
+function holdSpeech(id: number) {
+  clearKeepAlive();
+  keepAlive = window.setInterval(() => {
+    if (id !== runId) {
+      clearKeepAlive();
+      return;
+    }
+    const synth = window.speechSynthesis;
+    if (!synth.speaking && !synth.pending) {
+      clearKeepAlive();
+      return;
+    }
+    synth.resume();
+  }, 8000);
+}
+
+function applyVoice(utterance: SpeechSynthesisUtterance) {
+  const voices = window.speechSynthesis.getVoices();
+  const voice =
+    voices.find((item) => item.lang === 'en-GB') ||
+    voices.find((item) => item.lang.toLowerCase().startsWith('en'));
+  if (!voice) return;
+  utterance.voice = voice;
+  utterance.lang = voice.lang;
+}
+
+function failureStatus(error: string) {
+  if (error === 'not-allowed') return 'The phone blocked reading aloud. Allow sound, then try again.';
+  if (error === 'language-unavailable' || error === 'voice-unavailable') return 'This phone has no English voice for reading.';
+  return 'The page could not be read aloud.';
 }
 
 export function stopReading(nextStatus = 'Reading stopped.') {
   runId += 1;
+  clearKeepAlive();
   reading = false;
   status = nextStatus;
   window.speechSynthesis?.cancel();
@@ -108,12 +125,39 @@ export function startReading() {
     emit();
     return;
   }
+  const synth = window.speechSynthesis;
+  const parts = chunks(text);
   const id = ++runId;
-  window.speechSynthesis.cancel();
+  synth.getVoices();
+  if (synth.paused) synth.resume();
+  if (synth.speaking || synth.pending) synth.cancel();
+
+  parts.forEach((part, index) => {
+    const utterance = new SpeechSynthesisUtterance(part);
+    utterance.rate = 1;
+    applyVoice(utterance);
+    utterance.onend = () => {
+      if (id !== runId || index !== parts.length - 1) return;
+      clearKeepAlive();
+      reading = false;
+      status = 'The page has been read.';
+      emit();
+    };
+    utterance.onerror = (event) => {
+      if (id !== runId) return;
+      if (event.error === 'interrupted' || event.error === 'canceled') return;
+      clearKeepAlive();
+      reading = false;
+      status = failureStatus(event.error);
+      emit();
+    };
+    synth.speak(utterance);
+  });
+  synth.resume();
   reading = true;
   status = 'Reading this page.';
   emit();
-  window.setTimeout(() => speakAt(chunks(text), 0, id), 60);
+  holdSpeech(id);
 }
 
 export function toggleReading() {
