@@ -1,6 +1,9 @@
 export const contactEmail = 'hello@ibrary.app';
 
-/** Phone app opening. Change this when the date is set. */
+/**
+ * Held until a launch date is confirmed for the public site.
+ * Do not show this on the landing page before then.
+ */
 export const appOpensAt = '2027-01-12T09:00:00+01:00';
 export const appOpensLabel = '12 January 2027';
 
@@ -13,28 +16,69 @@ export const primaryNav = [
 
 export const footerColumns = [
   {
-    title: 'Product',
+    title: 'Who it is for',
     links: [
-      { href: '/features', label: 'Read aloud' },
-      { href: '/features', label: 'Gaze navigation' },
-      { href: '/features', label: 'Voice commands' },
+      { href: '/#students', label: 'For Students' },
+      { href: '/#educators', label: 'For Educators' },
+      { href: '/#parents', label: 'For Parents' },
     ],
   },
   {
-    title: 'Community',
+    title: 'iBrary',
     links: [
-      { href: '/schools', label: 'Schools' },
-      { href: '/learn', label: 'Classes' },
-      { href: '/faq', label: 'Questions' },
-    ],
-  },
-  {
-    title: 'Contact',
-    links: [
-      { href: '/contact', label: 'Support' },
-      { href: '/schools', label: 'Schools desk' },
+      { href: '/about', label: 'About iBrary' },
       { href: '/accessibility', label: 'Accessibility' },
+      { href: '/contact', label: 'Contact' },
     ],
+  },
+  {
+    title: 'Policies',
+    links: [
+      { href: '/privacy', label: 'Privacy Policy' },
+      { href: '/terms', label: 'Terms of Use' },
+    ],
+  },
+] as const;
+
+export const learningWays = [
+  {
+    title: 'Accessible by Design',
+    body: 'A learning experience being built with screen-reader users and different access needs in mind.',
+  },
+  {
+    title: 'Guided Learning Support',
+    body: 'Get help working through ideas and questions, with an emphasis on understanding the steps—not just the final answer.',
+  },
+  {
+    title: 'Made for the Nigerian Curriculum',
+    body: 'Learning content shaped around the Nigerian school context, so explanations feel relevant to what students are studying.',
+  },
+] as const;
+
+export const questions = [
+  {
+    q: 'What is iBrary?',
+    a: 'iBrary is an inclusive learning platform being built to help Nigerian secondary-school students understand curriculum-aligned topics through clear explanations, relatable learning content and guided support.',
+  },
+  {
+    q: 'Is iBrary just another AI chatbot?',
+    a: 'No. iBrary is being designed around structured learning content and guided support. The aim is to help students understand concepts and develop their reasoning, rather than simply receive answers.',
+  },
+  {
+    q: 'Who is iBrary for?',
+    a: 'iBrary is designed for secondary-school students, including learners with visual impairments, dyslexia and other learning differences. It also aims to support teachers and parents.',
+  },
+  {
+    q: 'Can visually impaired students use iBrary?',
+    a: 'Accessibility is a core part of iBrary’s design. The platform is being developed with screen-reader-friendly and audio-supported learning in mind. Specific features will depend on the version released.',
+  },
+  {
+    q: 'Can teachers contribute learning materials?',
+    a: 'iBrary is developing a process for educators to submit useful audio or video resources for review. Approved materials may be included alongside relevant lessons, with potential earning opportunities based on learner engagement.',
+  },
+  {
+    q: 'When will iBrary launch?',
+    a: 'Join the launch update list to receive announcements when the release date and access details are confirmed.',
   },
 ] as const;
 

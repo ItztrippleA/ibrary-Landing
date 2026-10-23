@@ -20,11 +20,11 @@ const readable = Lexend({
 export const metadata: Metadata = {
   metadataBase: new URL('https://ibrary.app'),
   title: {
-    default: 'iBrary — the whole class, one term',
+    default: 'iBrary — understand more, learn your way',
     template: '%s · iBrary',
   },
   description:
-    'iBrary is for every student and teacher in Nigerian secondary school, from JSS1 to SS3. Lessons, quizzes, and progress, with ways to read, hear, or follow a lesson in sign.',
+    'iBrary is an inclusive learning platform being built around the way Nigerian secondary-school students learn: clearer explanations, relatable lessons, and guided support.',
   applicationName: 'iBrary',
 };
 

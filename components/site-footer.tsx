@@ -7,9 +7,8 @@ export function SiteFooter() {
       <div className="wrap footer-grid">
         <div>
           <img className="brand-logo" src="/logo.png" alt="iBrary logo" />
-          <p className="fine">
-            Secondary school for every student and teacher, from JSS1 to SS3.
-          </p>
+          <p className="fine">iBrary — Learning that makes sense, for more learners.</p>
+          <p className="fine">Inclusive learning. Clearer explanations. A more personal learning journey.</p>
           <p className="fine">
             <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
           </p>

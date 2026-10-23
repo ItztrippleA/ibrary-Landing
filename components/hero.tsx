@@ -72,23 +72,23 @@ export function Hero() {
       <motion.div className="wrap hero-stage-copy" style={reduce ? undefined : { y: copyY }}>
         <div className="hero-copy">
           <HeroLine delay={0.05}>
-            <p className="eyebrow">Students and teachers</p>
+            <p className="eyebrow">Learning that finally makes sense.</p>
           </HeroLine>
           <HeroLine delay={0.16}>
-            <h1>Learning, adapted to your class.</h1>
+            <h1>Understand more. Learn your way.</h1>
           </HeroLine>
           <HeroLine delay={0.28}>
             <p className="lede">
-              One term for every student from JSS1 to SS3, and a place for the teacher to share the work. Read it, hear it, or follow it in sign.
+              Meet iBrary: an inclusive learning platform built around the way Nigerian students learn. Explore curriculum-aligned lessons, relatable explanations and learning support that helps you understand—not just memorise.
             </p>
           </HeroLine>
           <HeroLine delay={0.4}>
             <div className="inline-actions">
               <Link className="button" href="/#waitlist">
-                Join the class
+                Get Launch Updates
               </Link>
-              <Link className="button-quiet" href="/#why">
-                Learn more
+              <Link className="button-quiet" href="/#who">
+                Discover iBrary
               </Link>
             </div>
           </HeroLine>

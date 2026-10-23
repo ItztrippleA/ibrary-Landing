@@ -166,7 +166,7 @@ function NavItems({ pathname, onSamePage }: { pathname: string; onSamePage?: () 
       ))}
       <li>
         <Link href="/#waitlist" className="button" onClick={onClick}>
-          Join
+          Get updates
         </Link>
       </li>
     </>

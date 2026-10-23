@@ -1,108 +1,103 @@
 import Link from 'next/link';
-import { AudioHub } from '@/components/audio-hub';
-import { EngineRoom } from '@/components/engine-room';
-import { FeatureSuite } from '@/components/feature-suite';
 import { Hero } from '@/components/hero';
 import { LaunchBand } from '@/components/launch-band';
-import { appOpensLabel, levels, plans } from '@/lib/site';
+import { contactEmail, learningWays, questions } from '@/lib/site';
 
-const journeys = [
+const audiences = [
   {
-    href: '/learn',
-    kicker: 'Students',
-    title: 'For students',
-    body: 'Open your class, follow the term, and keep your progress. Hear the lesson or follow a sign when that helps.',
-    chips: ['Lessons', 'Quizzes', 'Progress'],
+    id: 'students',
+    title: 'For Students',
+    body: 'Ever met a topic that just would not make sense, no matter how many times you read it? iBrary is designed to break complex ideas into clear, relatable explanations and help you learn at your own pace.',
   },
   {
-    href: '/schools',
-    kicker: 'Teachers',
-    title: 'For teachers',
-    body: 'Upload a course once. The school reviews it before it reaches a class. iBrary does not replace the teacher in the room.',
-    chips: ['Upload', 'Review', 'Same term'],
+    id: 'teachers',
+    title: 'For Teachers',
+    body: 'Have a better way of explaining a difficult topic? iBrary will create opportunities for educators to share useful learning resources with students beyond their own classrooms, subject to review and approval.',
   },
   {
-    href: '/schools',
-    kicker: 'Schools',
-    title: 'For schools',
-    body: 'Turn tools on, write the voice phrases, and see how many students use each setting.',
-    chips: ['Access', 'People', 'Notices'],
+    id: 'caregivers',
+    title: 'For Parents and Caregivers',
+    body: 'Want to support your child’s learning but need a helpful resource to guide the way? iBrary is being designed to make learning clearer, more engaging and easier to follow.',
+  },
+  {
+    id: 'vision',
+    title: 'For Visually Impaired Learners',
+    body: 'Tired of learning materials that are difficult to access? iBrary is being built to make academic content easier to access through screen-reader-friendly and audio-supported learning experiences.',
+  },
+  {
+    id: 'differences',
+    title: 'For Learners with Dyslexia and Other Learning Differences',
+    body: 'Does traditional academic content feel too dense, abstract or difficult to follow? iBrary aims to offer clearer explanations and flexible ways to engage with lessons, so more learners can find a way that works for them.',
   },
 ];
 
-const reasons = [
-  {
-    title: 'One class',
-    body: 'Blind students, low-vision students, and everyone else open the same JSS1 to SS3 timetable.',
-  },
-  {
-    title: 'The term stays put',
-    body: 'Subjects and books are grouped the way the year is taught, in terms 1, 2, and 3.',
-  },
-  {
-    title: 'Teachers stay',
-    body: 'A course can be shared once and checked before students see it. The teacher in the room is still the teacher.',
-  },
-  {
-    title: 'More than one way in',
-    body: 'Read it, hear it, or follow a sign. Colour is never the only way to know a result.',
-  },
-  {
-    title: 'A saved place',
-    body: 'Progress, points, and badges stay on the account, so a student can leave and come back.',
-  },
-  {
-    title: 'A calmer page',
-    body: 'Sound does not start by itself. Notices are text, so a screen reader or a braille display can read them.',
-  },
+const supportPoints = [
+  'Curriculum-aligned learning for Nigerian students',
+  'Clear explanations connected to everyday life',
+  'Guided AI support that encourages understanding',
+  'More accessible ways to read, listen and learn',
 ];
+
+const educatorMailto = `mailto:${contactEmail}?subject=${encodeURIComponent('Join the iBrary educator community')}&body=${encodeURIComponent('Please add me to the iBrary educator community.\n\nName:\nWhat I teach:\n')}`;
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <LaunchBand />
-      <AudioHub />
-
-      <section className="section" id="journeys" aria-labelledby="journey-title">
+      <section className="section" id="who" aria-labelledby="who-title">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">Journeys</p>
-            <h2 id="journey-title">Choose where you sit in the class.</h2>
-            <p>Students, teachers, and schools use the same year. Each door opens the part that belongs to you.</p>
+            <h2 id="who-title">Who is iBrary for?</h2>
+            <p>
+              A better learning experience should work for more people. iBrary is being built with students, teachers, parents and learners who are often left out of traditional learning experiences in mind.
+            </p>
           </div>
-          <div className="levels journey">
-            {journeys.map((item) => (
-              <Link className="panel journey-card" href={item.href} key={item.title}>
-                <p className="kicker">{item.kicker}</p>
+          <div className="levels">
+            {audiences.map((item) => (
+              <article className="panel" id={item.id} key={item.id}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
-                <p className="chip-row">
-                  {item.chips.map((chip) => (
-                    <span key={chip}>{chip}</span>
-                  ))}
-                </p>
-                <span className="suite-more">Enter</span>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <FeatureSuite />
-      <EngineRoom />
-
-      <section className="section" id="why" aria-labelledby="why-title">
+      <section className="section" id="guided" aria-labelledby="guided-title" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">Why it matters</p>
-            <h2 id="why-title">Secondary school, open to the whole class.</h2>
+            <h2 id="guided-title">AI should help you learn—not do the learning for you.</h2>
             <p>
-              Built for Nigerian secondary schools, from JSS1 to SS3. Access tools are part of the product, not a separate track with easier work.
+              You should not have to keep prompting a chatbot and hope it gives you an explanation that fits your class, curriculum and learning needs. iBrary brings learning content and guided AI support together in one place, with a focus on understanding, reasoning and progress—not simply getting answers.
+            </p>
+          </div>
+          <ul className="point-list">
+            {supportPoints.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section" id="real-life" aria-labelledby="real-life-title" style={{ paddingTop: 0 }}>
+        <div className="wrap narrow">
+          <h2 id="real-life-title">Learning that connects to real life.</h2>
+          <p>
+            Complex topics become easier to approach when explanations feel familiar. iBrary is designed to connect academic ideas to relatable examples, stories and guided activities—helping learners build understanding they can use beyond the classroom.
+          </p>
+        </div>
+      </section>
+
+      <section className="section" id="ways" aria-labelledby="ways-title" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <h2 id="ways-title">Learn in ways that work for you.</h2>
+            <p>
+              Read, listen and explore lessons in ways that better suit your needs. iBrary is being designed with accessibility and flexibility at its core, including support for learners who use assistive technology or benefit from alternative ways of engaging with content.
             </p>
           </div>
           <div className="levels">
-            {reasons.map((item) => (
+            {learningWays.map((item) => (
               <article className="panel" key={item.title}>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -112,64 +107,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section" style={{ paddingTop: 0 }} aria-labelledby="classes-title">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">Classes</p>
-            <h2 id="classes-title">Six years, three terms each.</h2>
+      <section className="section" id="educators" aria-labelledby="educators-title">
+        <div className="wrap narrow">
+          <h2 id="educators-title">A place for educators to share their knowledge.</h2>
+          <p>
+            Great teaching should be able to reach learners beyond one classroom. iBrary is developing a way for educators to contribute helpful learning resources—such as audio and video explanations—for review and possible inclusion alongside relevant topics. Approved contributions may also create opportunities for educators to earn when learners engage with their content.
+          </p>
+          <div className="inline-actions">
+            <a className="button" href={educatorMailto}>
+              Join the Educator Community
+            </a>
           </div>
-          <div className="levels">
-            {levels.map(([name, detail]) => (
-              <article className="level" key={name}>
-                <h3>{name}</h3>
-                <p>{detail}</p>
-              </article>
-            ))}
+          <p className="fine">This opens your mail app. This page does not keep a copy.</p>
+        </div>
+      </section>
+
+      <section className="section" id="parents" aria-labelledby="parents-title" style={{ paddingTop: 0 }}>
+        <div className="wrap narrow">
+          <p className="eyebrow">For parents</p>
+          <h2 id="parents-title">Help your child feel more confident about learning.</h2>
+          <p>
+            When a child understands what they are learning, confidence can grow with it. iBrary aims to give families another resource for exploring school topics, reinforcing understanding and supporting a more positive learning experience.
+          </p>
+          <div className="inline-actions">
+            <Link className="button" href="/#waitlist">
+              Get Launch Updates
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="section ink-band" id="plans">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">Plans</p>
-            <h2>Simple school-year pricing.</h2>
-            <p className="lede">
-              These are the plans prepared in iBrary. A referral from a classmate takes 10% off, and a purse on the account can hold credit toward a plan. Payment runs through Paystack, in naira.
-            </p>
-            <div className="inline-actions">
-              <Link className="button" href="/contact">
-                Ask about a plan
-              </Link>
-              <Link className="button-quiet" href="/schools">
-                For schools
-              </Link>
-            </div>
-          </div>
-          <div className="plans">
-            {plans.map((plan) => (
-              <article className="plan" key={plan.name}>
-                <h3>{plan.name}</h3>
-                <p className="price">{plan.price}</p>
-                <p>{plan.detail}</p>
-              </article>
-            ))}
-          </div>
+      <section className="section" id="founder" aria-labelledby="founder-title">
+        <div className="wrap narrow">
+          <p className="eyebrow">About the founder</p>
+          <h2 id="founder-title">A personal journey. A bigger purpose.</h2>
+          <p>
+            I lost my sight at nine and went on to navigate Nigeria’s education system with limited access to learning materials I could use independently. Audio recordings made by classmates helped me study on my own, while a tutor who explained difficult ideas through mental pictures transformed my experience of science. Later, I watched my younger sibling discover a love for Mathematics when a teacher used stories and relatable examples.
+          </p>
+          <p>
+            Those experiences taught me that sometimes, the problem is not the learner or the subject—it is how the lesson is presented. That belief inspired iBrary: an inclusive learning platform being built to make academic concepts clearer, more engaging and more accessible, so more learners can develop genuine understanding and confidence.
+          </p>
+          <blockquote className="pull-quote">
+            “Every learner deserves not just access to education, but the opportunity to truly understand it.”
+          </blockquote>
         </div>
       </section>
 
-      <section className="section">
-        <div className="wrap cta-band">
-          <div>
-            <p className="eyebrow">The phone</p>
-            <h2>Ready when the app opens.</h2>
-            <p>
-              The learning app opens {appOpensLabel}. Join the waitlist and the Google Play or App Store link arrives by email. This page does not keep a copy.
-            </p>
+      <LaunchBand />
+
+      <section className="section" id="questions" aria-labelledby="questions-title">
+        <div className="wrap narrow">
+          <h2 id="questions-title">Frequently asked questions</h2>
+          <div className="prose">
+            {questions.map((item) => (
+              <details key={item.q} className="faq">
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
           </div>
-          <Link className="button" href="/#waitlist">
-            Join the waitlist
-          </Link>
         </div>
       </section>
     </>

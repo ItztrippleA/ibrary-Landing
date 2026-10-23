@@ -650,6 +650,19 @@ a { color: inherit; }
   max-width: none;
 }
 
+.launch-card.waitlist { margin-top: 0; }
+
+#who,
+#students,
+#teachers,
+#educators,
+#parents,
+#founder,
+#waitlist,
+#questions {
+  scroll-margin-top: calc(var(--header) + 0.75rem);
+}
+
 .waitlist label {
   color: #f7fafc;
   font-size: 0.95rem;
@@ -841,6 +854,42 @@ blockquote {
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.35;
+}
+
+.narrow { max-width: 42rem; }
+.narrow p { color: var(--muted); }
+.narrow .eyebrow { color: var(--accent); }
+
+.pull-quote {
+  max-width: 40rem;
+  margin: 1.4rem 0 0;
+  color: var(--ink);
+}
+
+.point-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+}
+
+.point-list li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+
+.point-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 99px;
+  background: #e5810d;
 }
 
 .steps {
@@ -1459,6 +1508,7 @@ html.nav-open body {
     );
   }
 
+  .hero-copy { padding-right: 8.4rem; }
   .hero-copy h1 { font-size: 1.7rem; }
 
   .hero-copy .lede { font-size: 1rem; }
