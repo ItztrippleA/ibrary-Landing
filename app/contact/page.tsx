@@ -13,7 +13,7 @@ export default function ContactPage() {
       <p className="eyebrow">Contact</p>
       <h1>Write to us.</h1>
       <p className="lede">
-        Students, families, and schools. Tell us your class or the year group you have in mind. If you want a note when the phone app is ready, say so.
+        Students, families, teachers, and caregivers. If you want a note when iBrary launches, say so here or use Get Launch Updates on the home page.
       </p>
       <p>
         Email <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. The form opens that message in your mail app. This page does not keep a copy.

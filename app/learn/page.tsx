@@ -1,68 +1,47 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { PageIntro } from '@/components/page-intro';
-import { Reveal } from '@/components/motion';
+import { learningWays } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Learn',
-  description: 'How iBrary organises lessons, quizzes, progress, and practice for JSS1 to SS3.',
+  title: 'For students',
+  description: 'How iBrary is being designed to help Nigerian students understand curriculum-aligned topics.',
 };
-
-const blocks = [
-  {
-    title: 'Catalogue',
-    body: 'Each subject belongs to a class and a term, with a length and the books that go with it. You can keep a subject, and you can leave a short review once you have used it.',
-  },
-  {
-    title: 'Quizzes',
-    body: 'Questions sit under a topic, not in one endless paper. Four choices, one answer, and the option to leave a question ungraded when it is only for settling in. A result is saved with the attempt.',
-  },
-  {
-    title: 'Progress',
-    body: 'Every subject keeps a percent. Activity on the account records what you opened. You can leave and come back without asking someone to find your page.',
-  },
-  {
-    title: 'Games and points',
-    body: 'Points, badges, and a leaderboard reward steady practice. They sit beside the lesson. They do not replace it.',
-  },
-  {
-    title: 'Notices',
-    body: 'Results, billing, referrals, and general notes can arrive on the account, and by email when you allow it. You choose which of those emails you want.',
-  },
-  {
-    title: 'Plans and purse',
-    body: 'Monthly, six-month, and yearly plans are priced in naira and paid through Paystack. A purse can hold an amount toward a plan. A referral code from someone already on iBrary takes 10% off.',
-  },
-];
 
 export default function LearnPage() {
   return (
     <>
       <PageIntro
-        eyebrow="Learn"
-        title="The same syllabus, for the whole class."
-        lede="Open your class, pick the term, and study the topic. Teachers can add a course after the school checks it. You can read the lesson, hear it, or follow a sign."
+        eyebrow="For students"
+        title="Understand more. Learn your way."
+        lede="Ever met a topic that just would not make sense, no matter how many times you read it? iBrary is designed to break complex ideas into clear, relatable explanations and help you learn at your own pace."
         image="/images/study-tablet.jpg"
         alt="Hands holding a tablet with a high-contrast cream and navy layout, beside a tactile board."
       />
-      <section className="section">
-        <div className="wrap levels">
-          {blocks.map((block) => (
-            <Reveal key={block.title}>
-              <article className="panel">
-                <h2>{block.title}</h2>
-                <p>{block.body}</p>
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Learn in ways that work for you.</h2>
+            <p>
+              Read, listen and explore lessons in ways that better suit your needs. iBrary is being designed with accessibility and flexibility at its core, including support for learners who use assistive technology or benefit from alternative ways of engaging with content.
+            </p>
+          </div>
+          <div className="levels">
+            {learningWays.map((item) => (
+              <article className="panel" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
               </article>
-            </Reveal>
-          ))}
-        </div>
-        <div className="wrap inline-actions">
-          <Link className="button" href="/contact">
-            Ask for the app note
-          </Link>
-          <Link className="button-quiet" href="/accessibility">
-            Accessibility
-          </Link>
+            ))}
+          </div>
+          <div className="inline-actions">
+            <Link className="button" href="/#waitlist">
+              Get Launch Updates
+            </Link>
+            <Link className="button-quiet" href="/accessibility">
+              Accessibility
+            </Link>
+          </div>
         </div>
       </section>
     </>

@@ -19,7 +19,7 @@ export default function TermsPage() {
 
       <h2>The service</h2>
       <p>
-        iBrary provides secondary-school lessons, quizzes, progress, and related tools for students and teachers from JSS1 to SS3. Access tools are included so a lesson can be read, heard, or followed in sign. The phone app is still being prepared. Features described on the website arrive with the product, not all at once on this site.
+        iBrary is an inclusive learning platform being built to help Nigerian secondary-school students understand curriculum-aligned topics. Features described on the website arrive with the released product, not all at once on this site.
       </p>
 
       <h2>Accounts</h2>
@@ -34,10 +34,10 @@ export default function TermsPage() {
 
       <h2>Plans, purse, and referrals</h2>
       <p>
-        Paid plans are billed in Nigerian naira through Paystack. A monthly plan renews until you cancel. Longer plans run for the period you paid. Amounts shown on the site are the current list prices: NGN 2,500 a month, NGN 6,000 for six months, and NGN 24,000 for a year. We can change prices for new purchases. A change does not shorten a period you have already paid for.
+        When paid plans are offered, the price will be shown before you pay. Prices are not confirmed on this website yet. A change to a future price does not shorten a period you have already paid for.
       </p>
       <p>
-        A purse holds credit on the account toward a plan. It is not a bank account and it is not transferable for cash unless we are required to refund you. A referral code gives the invited person 10% off. Do not publish codes in a way that pretends to be iBrary.
+        A purse, if one is offered, holds credit on the account toward a plan. It is not a bank account and it is not transferable for cash unless we are required to refund you. Any referral offer will be described before it is used.
       </p>
 
       <h2>Acceptable use</h2>
