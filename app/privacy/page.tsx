@@ -24,8 +24,8 @@ export default function PrivacyPage() {
 
       <h2>What we collect</h2>
       <p>When you create an account we ask for your name, email, class, and a password, or we receive a Google sign-in identifier if you choose that. We store your class path when you set one.</p>
-      <p>As you study we store subject progress, quiz attempts and scores, activity titles, favourites, reviews you write, points, badges, notices, and referral codes you use or share.</p>
-      <p>If you pay, Paystack processes the card or transfer. We store the plan, the amount, the status, and a payment reference. We do not store your full card number.</p>
+      <p>As you study, we store subject progress, quiz attempts and scores, activity titles, favourites, reviews you write, points, badges, notices, and referral codes you use or share.</p>
+      <p>When you pay for a plan, Paystack processes the card or transfer. We store the plan, the amount, the status, and a payment reference. We do not store your full card number.</p>
       <p>A purse balance and the reasons it changed are stored on your account.</p>
         <p>This marketing website does not store a theme choice, a copy of the contact form, or the app waitlist. Those forms open your mail app. Speech you give the microphone stays in this browser. It is not sent or stored until an assistant is connected.</p>
 

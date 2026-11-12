@@ -34,7 +34,7 @@ export default function TermsPage() {
 
       <h2>Plans, purse, and referrals</h2>
       <p>
-        When paid plans are offered, the price will be shown before you pay. Prices are not confirmed on this website yet. A change to a future price does not shorten a period you have already paid for.
+        When paid plans are offered, the price will be shown before you pay. Prices are not confirmed on this website yet. A future change to the price of a plan does not shorten the period you have already paid for.
       </p>
       <p>
         A purse, if one is offered, holds credit on the account toward a plan. It is not a bank account and it is not transferable for cash unless we are required to refund you. Any referral offer will be described before it is used.

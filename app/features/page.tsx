@@ -13,7 +13,7 @@ export default function FeaturesPage() {
       <PageIntro
         eyebrow="Features"
         title="Learn in ways that work for you."
-        lede="Read, listen and explore lessons in ways that better suit your needs. iBrary is being designed with accessibility and flexibility at its core, including support for learners who use assistive technology or benefit from alternative ways of engaging with content."
+        lede="Read, listen to, and explore lessons in ways that better suit your needs. iBrary is being designed with accessibility and flexibility at its core, including support for learners who use assistive technology or benefit from alternative ways of engaging with content."
         image="/images/practice.jpg"
         alt="Two students in white shirts sit at a desk with open notebooks. One speaks and gestures. The other listens, with headphones around his neck."
       />

@@ -1,40 +1,36 @@
 export type AccessPrefs = {
-  text: 0 | 1 | 2 | 3;
+  zoom: number;
   contrast: boolean;
-  readable: boolean;
-  links: boolean;
-  spacing: boolean;
-  motion: boolean;
 };
 
 export const defaultPrefs: AccessPrefs = {
-  text: 0,
+  zoom: 100,
   contrast: false,
-  readable: false,
-  links: false,
-  spacing: false,
-  motion: false,
 };
 
-export const textLabels = ['Default', 'Large', 'Larger', 'Largest'] as const;
+export const zoomMin = 80;
+export const zoomMax = 200;
+export const zoomStep = 10;
 
 const storageKey = 'ibrary-access';
+
+export function clampZoom(value: number) {
+  const stepped = Math.round(value / zoomStep) * zoomStep;
+  return Math.min(zoomMax, Math.max(zoomMin, stepped));
+}
 
 export function readPrefs(): AccessPrefs {
   if (typeof window === 'undefined') return defaultPrefs;
   try {
     const raw = window.localStorage.getItem(storageKey);
     if (!raw) return defaultPrefs;
-    const parsed = JSON.parse(raw) as Partial<AccessPrefs>;
-    const text = parsed.text;
-    return {
-      text: text === 1 || text === 2 || text === 3 ? text : 0,
-      contrast: Boolean(parsed.contrast),
-      readable: Boolean(parsed.readable),
-      links: Boolean(parsed.links),
-      spacing: Boolean(parsed.spacing),
-      motion: Boolean(parsed.motion),
-    };
+    const parsed = JSON.parse(raw) as { zoom?: number; text?: number; contrast?: boolean };
+    let zoom = defaultPrefs.zoom;
+    if (typeof parsed.zoom === 'number' && Number.isFinite(parsed.zoom)) zoom = clampZoom(parsed.zoom);
+    else if (parsed.text === 1) zoom = 110;
+    else if (parsed.text === 2) zoom = 130;
+    else if (parsed.text === 3) zoom = 150;
+    return { zoom, contrast: Boolean(parsed.contrast) };
   } catch {
     return defaultPrefs;
   }
@@ -42,22 +38,20 @@ export function readPrefs(): AccessPrefs {
 
 export function applyPrefs(prefs: AccessPrefs) {
   const root = document.documentElement;
-  if (prefs.text === 0) delete root.dataset.text;
-  else root.dataset.text = String(prefs.text);
-  setFlag(root, 'contrast', prefs.contrast);
-  setFlag(root, 'readable', prefs.readable);
-  setFlag(root, 'links', prefs.links);
-  setFlag(root, 'spacing', prefs.spacing);
-  if (prefs.motion) root.dataset.motion = 'off';
-  else delete root.dataset.motion;
+  const zoom = clampZoom(prefs.zoom);
+  if (zoom === 100) root.style.fontSize = '';
+  else root.style.fontSize = `${zoom}%`;
+  if (prefs.contrast) root.dataset.contrast = 'on';
+  else delete root.dataset.contrast;
+  delete root.dataset.text;
+  delete root.dataset.readable;
+  delete root.dataset.links;
+  delete root.dataset.spacing;
+  delete root.dataset.motion;
 }
 
 export function savePrefs(prefs: AccessPrefs) {
-  applyPrefs(prefs);
-  window.localStorage.setItem(storageKey, JSON.stringify(prefs));
-}
-
-function setFlag(root: HTMLElement, name: string, on: boolean) {
-  if (on) root.dataset[name] = 'on';
-  else delete root.dataset[name];
+  const next = { zoom: clampZoom(prefs.zoom), contrast: prefs.contrast };
+  applyPrefs(next);
+  window.localStorage.setItem(storageKey, JSON.stringify(next));
 }

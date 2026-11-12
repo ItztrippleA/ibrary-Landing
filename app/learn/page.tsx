@@ -23,7 +23,7 @@ export default function LearnPage() {
           <div className="section-head">
             <h2>Learn in ways that work for you.</h2>
             <p>
-              Read, listen and explore lessons in ways that better suit your needs. iBrary is being designed with accessibility and flexibility at its core, including support for learners who use assistive technology or benefit from alternative ways of engaging with content.
+              Read, listen to, and explore lessons in ways that better suit your needs. iBrary is being designed with accessibility and flexibility at its core, including support for learners who use assistive technology or benefit from alternative ways of engaging with content.
             </p>
           </div>
           <div className="levels">

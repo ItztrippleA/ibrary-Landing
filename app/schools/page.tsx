@@ -15,7 +15,7 @@ export default function SchoolsPage() {
       <PageIntro
         eyebrow="For educators"
         title="A place for educators to share their knowledge."
-        lede="Have a better way of explaining a difficult topic? iBrary will create opportunities for educators to share useful learning resources with students beyond their own classrooms, subject to review and approval."
+        lede="Looking for a better way to explain a difficult topic? iBrary will create opportunities for educators to share useful learning resources with students beyond their own classrooms, subject to review and approval."
         image="/images/classroom.jpg"
         alt="A headphone-wearing student reads at a desk in a sunlit classroom, with classmates and a teacher behind him."
       />

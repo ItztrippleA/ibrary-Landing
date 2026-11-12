@@ -3,8 +3,6 @@
 import Link from 'next/link';
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { PageReader } from '@/components/page-reader';
-
 const ease = [0.22, 1, 0.36, 1] as const;
 
 function HeroLine({ children, delay }: { children: React.ReactNode; delay: number }) {
@@ -68,14 +66,17 @@ export function Hero() {
         <Cube className="cube-6" />
         <Cube className="cube-7" />
       </div>
-      <PageReader />
       <motion.div className="wrap hero-stage-copy" style={reduce ? undefined : { y: copyY }}>
         <div className="hero-copy">
           <HeroLine delay={0.05}>
             <p className="eyebrow">Learning that finally makes sense.</p>
           </HeroLine>
           <HeroLine delay={0.16}>
-            <h1>Understand more. Learn your way.</h1>
+            <h1>
+              Understand more.
+              <br />
+              Learn your way.
+            </h1>
           </HeroLine>
           <HeroLine delay={0.28}>
             <p className="lede">

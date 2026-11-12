@@ -22,7 +22,7 @@ export function LaunchBand() {
         <div>
           <h2 id="launch-title">A new way to learn is on the way.</h2>
           <p className="launch-lede">
-            iBrary is being built to make learning more understandable, inclusive and personal for Nigerian students. Sign up to hear when it is ready and be among the first to explore it.
+            iBrary is being built to make learning more understandable, inclusive and personal for Nigerian students. Sign up to know when it is ready and be among the first to explore it.
           </p>
         </div>
         <form className="launch-card waitlist" onSubmit={join}>
