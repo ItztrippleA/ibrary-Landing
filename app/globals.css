@@ -222,13 +222,13 @@ a { color: inherit; }
 .button,
 .nav-links a.button {
   background: #e5810d;
-  color: #2a1248;
+  color: #fff;
   border-color: rgba(252, 243, 244, 0.28);
 }
 
 .button:hover,
 .nav-links a.button:hover {
-  color: #2a1248;
+  color: #fff;
   background: #f0942a;
   filter: none;
 }
@@ -1923,7 +1923,7 @@ html[data-motion='off'] .cube-spin { transform: rotateX(-18deg) rotateY(28deg); 
 
 .access-read-btn.is-reading {
   background: #e5810d;
-  color: #2a1248;
+  color: #fff;
 }
 
 .access-read-btn:disabled { opacity: 0.65; cursor: not-allowed; }
